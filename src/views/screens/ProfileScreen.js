@@ -1,4 +1,4 @@
-// src/views/screens/ProfileScreen.js
+// src/views/screens/ProfileScreen.js - Mejorado según mockup
 import React from 'react';
 import {
     View,
@@ -8,7 +8,6 @@ import {
     SafeAreaView,
     Alert,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import { AuthController } from '../../controllers/AuthController';
 import BottomNav from '../components/BottomNav';
@@ -43,11 +42,8 @@ export default function ProfileScreen({
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <LinearGradient
-                    colors={['#9333ea', '#ec4899']}
-                    style={styles.header}
-                >
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
                     <View style={styles.profileHeader}>
                         <View style={styles.avatar}>
                             <Text style={styles.avatarText}>{user?.avatar || '👤'}</Text>
@@ -61,7 +57,7 @@ export default function ProfileScreen({
                             </Text>
                         </View>
                     </View>
-                </LinearGradient>
+                </View>
 
                 <View style={styles.content}>
                     <View style={styles.infoCard}>
@@ -78,7 +74,7 @@ export default function ProfileScreen({
                                 {user?.weight ? `${user.weight} kg` : '75 kg'}
                             </Text>
                         </View>
-                        <View style={styles.infoRow}>
+                        <View style={[styles.infoRow, { borderBottomWidth: 0 }]}>
                             <Text style={styles.infoLabel}>Edad</Text>
                             <Text style={styles.infoValue}>
                                 {user?.age ? `${user.age} años` : '28 años'}
@@ -96,7 +92,7 @@ export default function ProfileScreen({
                             <Text style={styles.settingsLabel}>Nivel de experiencia</Text>
                             <Text style={styles.chevron}>›</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.settingsRow}>
+                        <TouchableOpacity style={[styles.settingsRow, { marginBottom: 0 }]}>
                             <Text style={styles.settingsLabel}>Días de entrenamiento</Text>
                             <Text style={styles.chevron}>›</Text>
                         </TouchableOpacity>
@@ -112,7 +108,7 @@ export default function ProfileScreen({
                             <Text style={styles.settingsLabel}>Privacidad</Text>
                             <Text style={styles.chevron}>›</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.settingsRow}>
+                        <TouchableOpacity style={[styles.settingsRow, { marginBottom: 0 }]}>
                             <Text style={styles.settingsLabel}>Tema</Text>
                             <Text style={styles.chevron}>›</Text>
                         </TouchableOpacity>

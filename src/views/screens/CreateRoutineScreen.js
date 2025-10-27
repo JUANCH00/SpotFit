@@ -1,4 +1,4 @@
-// src/views/screens/CreateRoutineScreen.js
+// src/views/screens/CreateRoutineScreen.js - Mejorado según mockup
 import React, { useState } from 'react';
 import {
     View,
@@ -9,7 +9,6 @@ import {
     SafeAreaView,
     Alert,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import { ExerciseController } from '../../controllers/ExerciseController';
 import { RoutineController } from '../../controllers/RoutineController';
@@ -62,18 +61,13 @@ export default function CreateRoutineScreen({
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <LinearGradient
-                    colors={['#9333ea', '#ec4899']}
-                    style={styles.header}
-                >
-                    <View style={styles.headerWithBack}>
-                        <TouchableOpacity onPress={() => setCurrentScreen('routines')}>
-                            <Text style={styles.backButton}>← Volver</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.headerTitle}>Nueva Rutina</Text>
-                    </View>
-                </LinearGradient>
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={() => setCurrentScreen('routines')}>
+                        <Text style={styles.backButton}>← Volver</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.headerTitle}>Nueva Rutina</Text>
+                </View>
 
                 <View style={styles.content}>
                     <View style={styles.inputGroup}>
@@ -81,7 +75,7 @@ export default function CreateRoutineScreen({
                         <TextInput
                             style={styles.input}
                             placeholder="Ej: Rutina de fuerza"
-                            placeholderTextColor="#9ca3af"
+                            placeholderTextColor="#999999"
                             value={routineName}
                             onChangeText={setRoutineName}
                         />
@@ -92,9 +86,20 @@ export default function CreateRoutineScreen({
                     </Text>
 
                     {selectedExercises.length === 0 ? (
-                        <View style={styles.selectedExerciseCard}>
-                            <Text style={{ color: '#9ca3af', textAlign: 'center' }}>
-                                Agrega ejercicios a tu rutina
+                        <View style={[styles.selectedExerciseCard, {
+                            paddingVertical: 30,
+                            justifyContent: 'center',
+                            backgroundColor: '#FFFFFF',
+                            borderWidth: 2,
+                            borderStyle: 'dashed',
+                            borderColor: '#E0E0E0',
+                        }]}>
+                            <Text style={{
+                                color: '#999999',
+                                textAlign: 'center',
+                                fontSize: 15,
+                            }}>
+                                ✋ Agrega ejercicios a tu rutina
                             </Text>
                         </View>
                     ) : (
@@ -106,7 +111,7 @@ export default function CreateRoutineScreen({
                                         <Text style={styles.exerciseEmojiSmall}>
                                             {exercise?.emoji}
                                         </Text>
-                                        <View>
+                                        <View style={{ flex: 1 }}>
                                             <Text style={styles.selectedExerciseName}>
                                                 {exercise?.name}
                                             </Text>
@@ -115,7 +120,17 @@ export default function CreateRoutineScreen({
                                             </Text>
                                         </View>
                                     </View>
-                                    <TouchableOpacity onPress={() => removeExercise(idx)}>
+                                    <TouchableOpacity
+                                        onPress={() => removeExercise(idx)}
+                                        style={{
+                                            width: 32,
+                                            height: 32,
+                                            borderRadius: 16,
+                                            backgroundColor: '#FFF5F5',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                        }}
+                                    >
                                         <Text style={styles.removeButton}>✕</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -123,7 +138,10 @@ export default function CreateRoutineScreen({
                         })
                     )}
 
-                    <Text style={styles.sectionTitle}>Ejercicios disponibles</Text>
+                    <Text style={[styles.sectionTitle, { marginTop: 30 }]}>
+                        Ejercicios disponibles
+                    </Text>
+
                     {exercises.map(exercise => {
                         const isSelected = selectedExercises.some(
                             ex => ex.exerciseId === exercise.id
@@ -149,7 +167,18 @@ export default function CreateRoutineScreen({
                                         </Text>
                                     </View>
                                 </View>
-                                <Text style={styles.addIcon}>+</Text>
+                                <View style={{
+                                    width: 32,
+                                    height: 32,
+                                    borderRadius: 16,
+                                    backgroundColor: isSelected ? '#E0E0E0' : '#F0FFF4',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}>
+                                    <Text style={[styles.addIcon, { fontSize: 20 }]}>
+                                        {isSelected ? '✓' : '+'}
+                                    </Text>
+                                </View>
                             </TouchableOpacity>
                         );
                     })}
@@ -163,12 +192,9 @@ export default function CreateRoutineScreen({
                             styles.disabledButton
                         ]}
                     >
-                        <LinearGradient
-                            colors={['#9333ea', '#ec4899']}
-                            style={styles.buttonGradient}
-                        >
+                        <View style={styles.buttonGradient}>
                             <Text style={styles.buttonText}>Guardar Rutina</Text>
-                        </LinearGradient>
+                        </View>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

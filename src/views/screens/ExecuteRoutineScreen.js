@@ -1,4 +1,4 @@
-// src/views/screens/ExecuteRoutineScreen.js
+// src/views/screens/ExecuteRoutineScreen.js - Mejorado según mockup
 import React, { useState } from 'react';
 import {
     View,
@@ -8,7 +8,6 @@ import {
     SafeAreaView,
     Alert,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import { ExerciseController } from '../../controllers/ExerciseController';
 
@@ -58,11 +57,8 @@ export default function ExecuteRoutineScreen({
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <LinearGradient
-                    colors={['#10b981', '#14b8a6']}
-                    style={styles.header}
-                >
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
                     <TouchableOpacity onPress={() => setCurrentScreen('routines')}>
                         <Text style={styles.backButton}>← Volver</Text>
                     </TouchableOpacity>
@@ -71,7 +67,7 @@ export default function ExecuteRoutineScreen({
                         Ejercicio {currentExerciseIndex + 1} de{' '}
                         {selectedRoutine.exercises.length}
                     </Text>
-                </LinearGradient>
+                </View>
 
                 <View style={styles.content}>
                     <View style={styles.exerciseDisplay}>
@@ -120,24 +116,18 @@ export default function ExecuteRoutineScreen({
                                 onPress={handleNext}
                                 style={styles.navButtonPrimary}
                             >
-                                <LinearGradient
-                                    colors={['#10b981', '#14b8a6']}
-                                    style={styles.buttonGradient}
-                                >
+                                <View style={styles.buttonGradient}>
                                     <Text style={styles.buttonText}>Siguiente</Text>
-                                </LinearGradient>
+                                </View>
                             </TouchableOpacity>
                         ) : (
                             <TouchableOpacity
                                 onPress={handleFinish}
                                 style={styles.navButtonPrimary}
                             >
-                                <LinearGradient
-                                    colors={['#10b981', '#14b8a6']}
-                                    style={styles.buttonGradient}
-                                >
+                                <View style={styles.buttonGradient}>
                                     <Text style={styles.buttonText}>Finalizar</Text>
-                                </LinearGradient>
+                                </View>
                             </TouchableOpacity>
                         )}
                     </View>

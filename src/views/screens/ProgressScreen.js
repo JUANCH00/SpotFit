@@ -1,4 +1,4 @@
-// src/views/screens/ProgressScreen.js
+// src/views/screens/ProgressScreen.js - Mejorado según mockup
 import React from 'react';
 import {
     View,
@@ -6,7 +6,6 @@ import {
     ScrollView,
     SafeAreaView,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import BottomNav from '../components/BottomNav';
 
@@ -18,12 +17,9 @@ export default function ProgressScreen({ currentScreen, setCurrentScreen }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <LinearGradient
-                    colors={['#2563eb', '#06b6d4']}
-                    style={styles.header}
-                >
-                    <Text style={styles.headerTitle}>Mi Progreso</Text>
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
+                    <Text style={styles.headerTitle}>Progreso</Text>
 
                     <View style={styles.statsGrid}>
                         <View style={styles.statCard}>
@@ -35,11 +31,11 @@ export default function ProgressScreen({ currentScreen, setCurrentScreen }) {
                             <Text style={styles.statLabel}>Calorías</Text>
                         </View>
                         <View style={styles.statCard}>
-                            <Text style={styles.statValue}>95.5%</Text>
+                            <Text style={styles.statValue}>95%</Text>
                             <Text style={styles.statLabel}>Progreso</Text>
                         </View>
                     </View>
-                </LinearGradient>
+                </View>
 
                 <View style={styles.content}>
                     <View style={styles.chartCard}>
