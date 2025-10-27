@@ -1,4 +1,4 @@
-// src/views/screens/HomeScreen.js
+// src/views/screens/HomeScreen.js - Mejorado según mockup
 import React, { useState } from 'react';
 import {
     View,
@@ -8,7 +8,6 @@ import {
     TouchableOpacity,
     SafeAreaView,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import { ExerciseController } from '../../controllers/ExerciseController';
 import ExerciseCard from '../components/ExerciseCard';
@@ -28,11 +27,8 @@ export default function HomeScreen({ currentScreen, setCurrentScreen }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <LinearGradient
-                    colors={['#10b981', '#14b8a6']}
-                    style={styles.header}
-                >
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.headerTitle}>Explorar</Text>
                         <TouchableOpacity style={styles.notificationButton}>
@@ -45,12 +41,12 @@ export default function HomeScreen({ currentScreen, setCurrentScreen }) {
                         <TextInput
                             style={styles.searchInput}
                             placeholder="Buscar ejercicios..."
-                            placeholderTextColor="#6b7280"
+                            placeholderTextColor="#999999"
                             value={searchQuery}
                             onChangeText={setSearchQuery}
                         />
                     </View>
-                </LinearGradient>
+                </View>
 
                 <View style={styles.content}>
                     <ScrollView

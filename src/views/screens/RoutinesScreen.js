@@ -1,4 +1,4 @@
-// src/views/screens/RoutinesScreen.js
+// src/views/screens/RoutinesScreen.js - Mejorado según mockup
 import React from 'react';
 import {
     View,
@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     SafeAreaView,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import { RoutineController } from '../../controllers/RoutineController';
 import RoutineCard from '../components/RoutineCard';
@@ -34,19 +33,16 @@ export default function RoutinesScreen({
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <LinearGradient
-                    colors={['#9333ea', '#ec4899']}
-                    style={styles.header}
-                >
-                    <Text style={styles.headerTitle}>Mis Rutinas</Text>
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
+                    <Text style={styles.headerTitle}>Rutinas</Text>
                     <TouchableOpacity
                         onPress={() => setCurrentScreen('createRoutine')}
                         style={styles.newRoutineButton}
                     >
                         <Text style={styles.newRoutineText}>+ Nueva Rutina</Text>
                     </TouchableOpacity>
-                </LinearGradient>
+                </View>
 
                 <View style={styles.content}>
                     {routines.length === 0 ? (
@@ -57,24 +53,24 @@ export default function RoutinesScreen({
                                 onPress={() => setCurrentScreen('createRoutine')}
                                 style={styles.emptyButton}
                             >
-                                <LinearGradient
-                                    colors={['#9333ea', '#ec4899']}
-                                    style={styles.buttonGradient}
-                                >
+                                <View style={styles.buttonGradient}>
                                     <Text style={styles.buttonText}>
                                         Crear mi primera rutina
                                     </Text>
-                                </LinearGradient>
+                                </View>
                             </TouchableOpacity>
                         </View>
                     ) : (
-                        routines.map(routine => (
-                            <RoutineCard
-                                key={routine.id}
-                                routine={routine}
-                                onPress={handleRoutinePress}
-                            />
-                        ))
+                        <View>
+                            <Text style={styles.sectionTitle}>Mis Rutinas</Text>
+                            {routines.map(routine => (
+                                <RoutineCard
+                                    key={routine.id}
+                                    routine={routine}
+                                    onPress={handleRoutinePress}
+                                />
+                            ))}
+                        </View>
                     )}
 
                     {predefinedRoutines.length > 0 && (

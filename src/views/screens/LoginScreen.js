@@ -1,4 +1,4 @@
-// src/views/screens/LoginScreen.js
+// src/views/screens/LoginScreen.js - Minimalista
 import React, { useState } from 'react';
 import {
     View,
@@ -8,7 +8,6 @@ import {
     SafeAreaView,
     Alert,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../styles/styles';
 import { AuthController } from '../../controllers/AuthController';
 
@@ -40,88 +39,103 @@ export default function LoginScreen({ setUser, setCurrentScreen }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <LinearGradient
-                colors={['#1f2937', '#111827', '#000000']}
-                style={styles.gradientContainer}
-            >
-                <View style={styles.loginContainer}>
-                    <View style={styles.logoContainer}>
-                        <LinearGradient
-                            colors={['#34d399', '#14b8a6']}
-                            style={styles.logoGradient}
-                        >
-                            <Text style={styles.logoEmoji}>💪</Text>
-                        </LinearGradient>
-                        <Text style={styles.logoText}>
-                            Spot<Text style={styles.logoAccent}>fit</Text>
-                        </Text>
-                        <Text style={styles.subtitle}>Tu compañero de entrenamiento</Text>
+            <View style={styles.loginContainer}>
+                <View style={styles.logoContainer}>
+                    <View style={styles.logoGradient}>
+                        <Text style={styles.logoEmoji}>💪</Text>
                     </View>
-
-                    <View style={styles.formContainer}>
-                        <Text style={styles.formTitle}>Inicio de Sesión</Text>
-
-                        <View style={styles.inputGroup}>
-                            <Text style={styles.label}>Correo electrónico</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="tu@email.com"
-                                placeholderTextColor="#9ca3af"
-                                value={email}
-                                onChangeText={setEmail}
-                                keyboardType="email-address"
-                                autoCapitalize="none"
-                            />
-                        </View>
-
-                        <View style={styles.inputGroup}>
-                            <Text style={styles.label}>Contraseña</Text>
-                            <View style={styles.passwordContainer}>
-                                <TextInput
-                                    style={styles.passwordInput}
-                                    placeholder="••••••••"
-                                    placeholderTextColor="#9ca3af"
-                                    value={password}
-                                    onChangeText={setPassword}
-                                    secureTextEntry={!showPassword}
-                                />
-                                <TouchableOpacity
-                                    onPress={() => setShowPassword(!showPassword)}
-                                    style={styles.eyeButton}
-                                >
-                                    <Text style={styles.eyeIcon}>
-                                        {showPassword ? '👁️' : '🙈'}
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-
-                        <TouchableOpacity
-                            onPress={handleLogin}
-                            style={styles.primaryButton}
-                            disabled={loading}
-                        >
-                            <LinearGradient
-                                colors={['#10b981', '#14b8a6']}
-                                style={styles.buttonGradient}
-                            >
-                                <Text style={styles.buttonText}>
-                                    {loading ? 'Cargando...' : 'Continuar'}
-                                </Text>
-                            </LinearGradient>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.forgotButton}>
-                            <Text style={styles.forgotText}>¿Olvidaste tu contraseña?</Text>
-                        </TouchableOpacity>
-
-                        <Text style={styles.registerText}>
-                            ¿No tienes cuenta?{' '}
-                            <Text style={styles.registerLink}>Regístrate</Text>
-                        </Text>
-                    </View>
+                    <Text style={styles.logoText}>
+                        Spot<Text style={styles.logoAccent}>fit</Text>
+                    </Text>
+                    <Text style={styles.subtitle}>Tu compañero de entrenamiento</Text>
                 </View>
-            </LinearGradient>
+
+                <View style={styles.formContainer}>
+                    <Text style={styles.formTitle}>Inicio de Sesión</Text>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Correo electrónico</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="tu@email.com"
+                            placeholderTextColor="#B0B0B0"
+                            value={email}
+                            onChangeText={setEmail}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
+                        />
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Contraseña</Text>
+                        <View style={styles.passwordContainer}>
+                            <TextInput
+                                style={styles.passwordInput}
+                                placeholder="••••••••"
+                                placeholderTextColor="#B0B0B0"
+                                value={password}
+                                onChangeText={setPassword}
+                                secureTextEntry={!showPassword}
+                            />
+                            <TouchableOpacity
+                                onPress={() => setShowPassword(!showPassword)}
+                                style={styles.eyeButton}
+                            >
+                                <Text style={styles.eyeIcon}>
+                                    {showPassword ? '👁️' : '👁️‍🗨️'}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <TouchableOpacity
+                        onPress={handleLogin}
+                        style={styles.primaryButton}
+                        disabled={loading}
+                    >
+                        <View style={styles.buttonGradient}>
+                            <Text style={styles.buttonText}>
+                                {loading ? 'Cargando...' : 'Entrar'}
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.forgotButton}>
+                        <Text style={styles.forgotText}>¿Olvidaste tu contraseña?</Text>
+                    </TouchableOpacity>
+
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginTop: 24,
+                        marginBottom: 24,
+                    }}>
+                        <View style={{ height: 1, flex: 1, backgroundColor: '#E8E8E8' }} />
+                        <Text style={{ marginHorizontal: 12, color: '#B0B0B0', fontSize: 13 }}>o</Text>
+                        <View style={{ height: 1, flex: 1, backgroundColor: '#E8E8E8' }} />
+                    </View>
+
+                    <TouchableOpacity
+                        style={[styles.primaryButton, {
+                            backgroundColor: '#FFFFFF',
+                            borderWidth: 1.5,
+                            borderColor: '#E8E8E8',
+                        }]}
+                    >
+                        <View style={[styles.buttonGradient, { backgroundColor: '#FFFFFF' }]}>
+                            <Text style={[styles.buttonText, { color: '#1A1A1A' }]}>
+                                Acceder con Google
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <Text style={styles.registerText}>
+                        ¿No tienes cuenta?{' '}
+                        <Text style={styles.registerLink}>Regístrate</Text>
+                    </Text>
+                </View>
+            </View>
         </SafeAreaView>
     );
 }
