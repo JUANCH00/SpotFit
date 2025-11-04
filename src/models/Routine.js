@@ -41,7 +41,7 @@ export class Routine {
     constructor(id, name, exercises = []) {
         this.id = id;
         this.name = name;
-        this.exercises = exercises; // [{exerciseId, sets, reps, weight}]
+        this.exercises = exercises; //
         this.createdAt = new Date();
     }
 
