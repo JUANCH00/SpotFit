@@ -1,17 +1,17 @@
 // App.js
-import React, { useState } from 'react';
-import { StatusBar } from 'react-native';
-import LoginScreen from './src/views/screens/LoginScreen';
-import HomeScreen from './src/views/screens/HomeScreen';
-import RoutinesScreen from './src/views/screens/RoutinesScreen';
-import CreateRoutineScreen from './src/views/screens/CreateRoutineScreen';
-import EditRoutineScreen from './src/views/screens/EditRoutineScreen';
-import ExecuteRoutineScreen from './src/views/screens/ExecuteRoutineScreen';
-import ProgressScreen from './src/views/screens/ProgressScreen';
-import ProfileScreen from './src/views/screens/ProfileScreen';
+import React, { useState } from "react";
+import { StatusBar } from "react-native";
+import LoginScreen from "./src/views/screens/LoginScreen";
+import HomeScreen from "./src/views/screens/HomeScreen";
+import RoutinesScreen from "./src/views/screens/RoutinesScreen";
+import CreateRoutineScreen from "./src/views/screens/CreateRoutineScreen";
+import EditRoutineScreen from "./src/views/screens/EditRoutineScreen";
+import ExecuteRoutineScreen from "./src/views/screens/ExecuteRoutineScreen";
+import ProgressScreen from "./src/views/screens/ProgressScreen";
+import ProfileScreen from "./src/views/screens/ProfileScreen";
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('login');
+  const [currentScreen, setCurrentScreen] = useState("login");
   const [user, setUser] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [selectedRoutine, setSelectedRoutine] = useState(null);
@@ -29,24 +29,24 @@ export default function App() {
 
   const renderScreen = () => {
     switch (currentScreen) {
-      case 'login':
+      case "login":
         return <LoginScreen {...screenProps} />;
-      case 'home':
+      case "home":
         return <HomeScreen {...screenProps} />;
-      case 'routines':
+      case "routines":
         return <RoutinesScreen {...screenProps} />;
-      case 'createRoutine':
+      case "createRoutine":
         return <CreateRoutineScreen {...screenProps} />;
-      case 'editRoutine':
+      case "editRoutine":
         return <EditRoutineScreen {...screenProps} />;
-      case 'executeRoutine':
+      case "executeRoutine":
         return <ExecuteRoutineScreen {...screenProps} />;
-      case 'progress':
+      case "progress":
         return <ProgressScreen {...screenProps} />;
-      case 'profile':
+      case "profile":
         return <ProfileScreen {...screenProps} />;
       default:
-        return <LoginScreen {...screenProps} />
+        return <LoginScreen {...screenProps} />;
     }
   };
 
