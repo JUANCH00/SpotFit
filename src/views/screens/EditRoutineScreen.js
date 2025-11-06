@@ -1,4 +1,4 @@
-// src/views/screens/CreateRoutineScreen.js - Mejorado según mockup
+// src/views/screens/EditRoutineScreen.js
 import React, { useState } from 'react';
 import {
     View,
@@ -13,13 +13,14 @@ import { styles } from '../../styles/styles';
 import { ExerciseController } from '../../controllers/ExerciseController';
 import { RoutineController } from '../../controllers/RoutineController';
 
-export default function CreateRoutineScreen({
+export default function EditRoutineScreen({
     setCurrentScreen,
     routines,
     setRoutines,
+    selectedRoutine,
 }) {
-    const [routineName, setRoutineName] = useState('');
-    const [selectedExercises, setSelectedExercises] = useState([]);
+    const [routineName, setRoutineName] = useState(selectedRoutine?.name || '');
+    const [selectedExercises, setSelectedExercises] = useState(selectedRoutine?.exercises || []);
 
     const exercises = ExerciseController.getAllExercises();
 
@@ -48,11 +49,13 @@ export default function CreateRoutineScreen({
         }
 
         try {
-            const newRoutine = RoutineController.createRoutine(
-                routineName,
-                selectedExercises
+            // Actualizar la rutina existente
+            const updatedRoutines = routines.map(r =>
+                r.id === selectedRoutine.id
+                    ? { ...r, name: routineName, exercises: selectedExercises }
+                    : r
             );
-            setRoutines([...routines, newRoutine]);
+            setRoutines(updatedRoutines);
             setCurrentScreen('routines');
         } catch (error) {
             Alert.alert('Error', error.message);
@@ -66,7 +69,7 @@ export default function CreateRoutineScreen({
                     <TouchableOpacity onPress={() => setCurrentScreen('routines')}>
                         <Text style={styles.backButton}>← Volver</Text>
                     </TouchableOpacity>
-                    <Text style={styles.headerTitle}>Nueva Rutina</Text>
+                    <Text style={styles.headerTitle}>Editar Rutina</Text>
                 </View>
 
                 <View style={styles.content}>
@@ -388,7 +391,7 @@ export default function CreateRoutineScreen({
                         ]}
                     >
                         <View style={styles.buttonGradient}>
-                            <Text style={styles.buttonText}>Guardar Rutina</Text>
+                            <Text style={styles.buttonText}>Guardar Cambios</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
