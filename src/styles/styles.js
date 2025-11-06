@@ -764,9 +764,9 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderTopWidth: 1,
         borderTopColor: '#F0F0F0',
-        paddingVertical: 10,
-        paddingHorizontal: 16,
-        paddingBottom: 25,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        paddingBottom: 28,
         position: 'absolute',
         bottom: 0,
         left: 0,
@@ -780,7 +780,18 @@ export const styles = StyleSheet.create({
     navItem: {
         flex: 1,
         alignItems: 'center',
-        paddingVertical: 6,
+        paddingVertical: 8,
+        position: 'relative',
+    },
+    navIcon: {
+        fontSize: 24,
+    },
+    activeIndicator: {
+        width: 4,
+        height: 4,
+        borderRadius: 2,
+        backgroundColor: '#00D9A3',
+        marginTop: 6,
     },
     navIconContainer: {
         backgroundColor: 'transparent',
@@ -792,9 +803,6 @@ export const styles = StyleSheet.create({
     },
     navIconContainerActive: {
         backgroundColor: '#1A1A1A',
-    },
-    navIcon: {
-        fontSize: 24,
     },
     navLabel: {
         color: '#999999',

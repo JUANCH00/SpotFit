@@ -5,6 +5,7 @@ import LoginScreen from './src/views/screens/LoginScreen';
 import HomeScreen from './src/views/screens/HomeScreen';
 import RoutinesScreen from './src/views/screens/RoutinesScreen';
 import CreateRoutineScreen from './src/views/screens/CreateRoutineScreen';
+import EditRoutineScreen from './src/views/screens/EditRoutineScreen';
 import ExecuteRoutineScreen from './src/views/screens/ExecuteRoutineScreen';
 import ProgressScreen from './src/views/screens/ProgressScreen';
 import ProfileScreen from './src/views/screens/ProfileScreen';
@@ -36,6 +37,8 @@ export default function App() {
         return <RoutinesScreen {...screenProps} />;
       case 'createRoutine':
         return <CreateRoutineScreen {...screenProps} />;
+      case 'editRoutine':
+        return <EditRoutineScreen {...screenProps} />;
       case 'executeRoutine':
         return <ExecuteRoutineScreen {...screenProps} />;
       case 'progress':
@@ -43,7 +46,7 @@ export default function App() {
       case 'profile':
         return <ProfileScreen {...screenProps} />;
       default:
-        return <LoginScreen {...screenProps} />;
+        return <LoginScreen {...screenProps} />
     }
   };
 
